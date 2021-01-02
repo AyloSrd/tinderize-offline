@@ -1,8 +1,15 @@
 <script>
+	import { onMount } from 'svelte'
+	import * as faceapi from 'face-api.js'
 	import Navigation from './Components/Navigation/Navigation.svelte'
 	import Form from './Components/Form/Form.svelte'
 	import OutputBox from './Components/OutputBox/OutputBox.svelte'
 	import Footer from './Components/Footer/Footer.svelte'
+
+	onMount(async() => {
+		faceapi.nets.tinyFaceDetector.loadFromUri('./models').then(() => console.log('loaded'))
+	})
+
 </script>
 <div class="Body">
 	<Navigation />
