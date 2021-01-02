@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte'
 	import * as faceapi from 'face-api.js'
 	import Navigation from './Components/Navigation/Navigation.svelte'
+	import Spinner from './Components/Spinner/Spinner.svelte'
 	import Form from './Components/Form/Form.svelte'
 	import OutputBox from './Components/OutputBox/OutputBox.svelte'
 	import Footer from './Components/Footer/Footer.svelte'
@@ -14,6 +15,7 @@
 <div class="Body">
 	<Navigation />
 	<main>
+		<Spinner />
 		<Form />
 		<OutputBox />
 	</main>
@@ -21,6 +23,7 @@
 </div>
 
 <style>
+	/*#ff0066*/
 	.Body {
 		height: 100vh;
 		width: 100vw;
