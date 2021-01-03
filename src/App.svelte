@@ -4,22 +4,31 @@
 	import Navigation from './Components/Navigation/Navigation.svelte'
 	import Spinner from './Components/Spinner/Spinner.svelte'
 	import Form from './Components/Form/Form.svelte'
+	import InputBox from './Components/InputBox/InputBox.svelte'
 	import OutputBox from './Components/OutputBox/OutputBox.svelte'
 	import Footer from './Components/Footer/Footer.svelte'
 
+	let isLoading = true
+
 	onMount(async() => {
-		faceapi.nets.tinyFaceDetector.loadFromUri('./models').then(() => console.log('loaded'))
-	})
+		faceapi.nets.tinyFaceDetector.loadFromUri('./models')
+			.then(() => setTimeout(() => isLoading=false, 5000))
+			.catch(err => console.error(err))
+		}
+	)
 
 </script>
 <div class="Body">
-	<Navigation />
-	<main>
+	{#if isLoading}
 		<Spinner />
-		<Form />
-		<OutputBox />
-	</main>
-	<Footer />
+	{:else}	
+		<Navigation />
+		<main>
+			<InputBox />
+			<OutputBox />
+		</main>
+		<Footer />
+	{/if}
 </div>
 
 <style>

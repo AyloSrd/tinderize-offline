@@ -29,18 +29,28 @@
 				animation: blurred 3s infinite ease-out alternate;
 	}
 
-	.spinnerContainer {
+	.container {
+		height: 100vh;
+		width: 100vw;
+		max-height: 100%;
+		max-width: 100%;
+		display: grid;
+		place-content: center;
+	}
+	
+	.spinnerWrapper {
 		width: 5rem;
 		height: auto;
 	}
 
-	.spinnerContainer img {
+	.spinnerWrapper img {
 		width: 100%;
 		height: auto;
 	}
 </style>
 
-
-<div class="spinnerContainer blurred">
-	<img src="/logo.png" alt="spinner">
+<div class='container'>
+	<div class="spinnerWrapper blurred">
+		<img src="/logo.png" alt="spinner">
+	</div>
 </div>
