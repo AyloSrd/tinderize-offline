@@ -7,14 +7,12 @@
 	let showButtons = false
 
 	const src = './smiley.png'
+	const { id, relX, relY, relW, relH } = faceBoxData
 
-	const boxDetails = faceBoxData.region_info.bounding_box
-
-	const id = faceBoxData.id
-	$: top = Number(boxDetails.top_row)*height
-	$: left = Number(boxDetails.left_col)*width
-	$: boxWidth = (Number(boxDetails.right_col) - Number(boxDetails.left_col))*width
-	$: boxHeight = (Number(boxDetails.bottom_row) - Number(boxDetails.top_row))*height	
+	$: top = Number(relY)*height
+	$: left = Number(relX)*width
+	$: boxWidth = Number(relW)*width
+	$: boxHeight = Number(relH)*height	
 	
 	$: style = `position: absolute; top: ${top}px; left: ${left}px; height: ${boxHeight}px; width: ${boxWidth}px; z-index:5000;`
 

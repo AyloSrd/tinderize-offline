@@ -3,7 +3,6 @@
 	import * as faceapi from 'face-api.js'
 	import Navigation from './Components/Navigation/Navigation.svelte'
 	import Spinner from './Components/Spinner/Spinner.svelte'
-	import Form from './Components/Form/Form.svelte'
 	import InputBox from './Components/InputBox/InputBox.svelte'
 	import OutputBox from './Components/OutputBox/OutputBox.svelte'
 	import Footer from './Components/Footer/Footer.svelte'
@@ -25,7 +24,7 @@
 		<Navigation />
 		<main>
 			<InputBox />
-			<OutputBox />
+			<OutputBox { faceapi } />
 		</main>
 		<Footer />
 	{/if}
