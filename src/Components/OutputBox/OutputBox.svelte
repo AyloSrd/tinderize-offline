@@ -1,5 +1,6 @@
 <script>
 	import { image } from '../../imageStore'
+	import Modal from '../Modal/Modal.svelte'
 	import FaceBox from '../FaceBox/FaceBox.svelte'
 	
 	export let faceapi
@@ -19,6 +20,8 @@
 			return { id: Math.random(), relX, relY, relW, relH }
 		}))
 	}
+
+	const closeModal = () => image.reset()
 
 	$: src = $image.imgUrl
 	$: faceBoxes = $image.boxes
@@ -41,6 +44,7 @@
 			width: 100vw;
 			max-width: 100%;
 			height: auto;
+			overflow-y: auto;
 		}
 	}
 	@media (min-width:600px)  { 
@@ -57,22 +61,31 @@
 	}
 </style>
 {#if src}
-	<div 
-		id="imgLayer"
-		bind:clientWidth="{width}" 
-		bind:clientHeight="{height}"
-	>
-		<img 
-			alt="your pic"	
-			{ src }
-			bind:this="{img}"
-		/>
-		{#each faceBoxes as faceBoxData (faceBoxData.id)}
-		<FaceBox 
-			{ width }
-			{ height }
-			{ faceBoxData }
-		/>
-		{/each}
-	</div>
+	<Modal>
+		<div slot="nav">
+			<button on:click="{closeModal}">X</button>
+		</div>
+		<div 
+			slot="main"
+			id="imgLayer"
+			bind:clientWidth="{width}" 
+			bind:clientHeight="{height}"
+		>
+			<img 
+				alt="your pic"	
+				{ src }
+				bind:this="{img}"
+			/>
+			{#each faceBoxes as faceBoxData (faceBoxData.id)}
+			<FaceBox 
+				{ width }
+				{ height }
+				{ faceBoxData }
+			/>
+			{/each}
+		</div>
+		<div slot="footer">
+			<button>+</button>
+		</div>
+	</Modal>
 {/if}

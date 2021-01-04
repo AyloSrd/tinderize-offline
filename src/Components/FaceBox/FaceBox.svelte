@@ -9,10 +9,10 @@
 	const src = './smiley.png'
 	const { id, relX, relY, relW, relH } = faceBoxData
 
-	$: top = Number(relY)*height
-	$: left = Number(relX)*width
-	$: boxWidth = Number(relW)*width
-	$: boxHeight = Number(relH)*height	
+	$: top = Math.floor(Number(relY)*height)
+	$: left = Math.floor(Number(relX)*width)
+	$: boxWidth = Math.floor(Number(relW)*width)
+	$: boxHeight = Math.floor(Number(relH)*height)	
 	
 	$: style = `position: absolute; top: ${top}px; left: ${left}px; height: ${boxHeight}px; width: ${boxWidth}px; z-index:5000;`
 
