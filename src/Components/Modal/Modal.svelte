@@ -11,6 +11,10 @@
 		grid-template-rows: auto 1fr auto;
 		background-color: black;
 	}
+
+	.modalContainer section.modalMain {
+		overflow-y: auto;
+	}
 </style>
 <div class="modalContainer">
 	<nav class="modalNav">

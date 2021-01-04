@@ -43,15 +43,13 @@
 		#imgLayer img {
 			width: 100vw;
 			max-width: 100%;
-			height: auto;
-			overflow-y: auto;
 		}
 	}
 	@media (min-width:600px)  { 
 		#imgLayer {
 			display: block;
-			margin: 0 auto;
-			
+			margin: auto auto;
+			width: 600px;
 		}
 		#imgLayer img {
 			width: 100%;
