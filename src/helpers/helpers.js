@@ -17,7 +17,14 @@ export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 	//draw smilies
 	faceBoxes.forEach(d => {
 		const {relX, relY, relW, relH} = d
-		ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
+		// ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
+		const imgSmile = document.createElement('img')
+		imgSmile.src = './smiley.png'
+		imgSmile.width = 20;
+		imgSmile.height = 20;
+		imgSmile.onload = function() {
+		ctx.drawImage(imgSmile, relX*width, relY*height, relW*width, relH*height)
+		}
 	})
 	//append canvas
 	test.appendChild(canvas)

@@ -18,14 +18,15 @@
 	$: if(faceBoxes.length !== 0) {
 		console.log('faceBoxes OutputBox', faceBoxes)
 	}
-	
-	const createPic = () => {
-		div2Canvas(width, height, img, faceBoxes, test)
-	}
 
 	const detectFaces = async() => {
 		const res = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
 		image.setBoxes(res.map(d => pixels2percentages(d)))
+	}
+
+		
+	const createPic = () => {
+		div2Canvas(width, height, img, faceBoxes, test)
 	}
 
 	const closeModal = () => image.reset()
@@ -89,11 +90,7 @@
 		</div>
 		</div>
 		<div slot="footer">
-			{#if faceBoxes.length !== 0 }
-			<button on:click="{() => {
-				div2Canvas(width, height, img, faceBoxes, test)
-			}}">+</button>
-			{/if}
+			<button on:click="{createPic}">+</button>
 		</div>
 	</Modal>
 	<div id='test' bind:this="{test}">
