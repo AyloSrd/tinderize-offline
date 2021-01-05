@@ -1,5 +1,6 @@
 <script>
 	import { image } from '../../imageStore'
+	import { pixels2percentages, div2Canvas } from '../../helpers/helpers.js'  
 	import Modal from '../Modal/Modal.svelte'
 	import FaceBox from '../FaceBox/FaceBox.svelte'
 	
@@ -9,16 +10,16 @@
 	let height
 	let img
 	let detections
+	let imgLayer
+	let test
+
+	const createPic = () => {
+		div2Canvas(width, height, img, test)
+	}
 
 	const detectFaces = async() => {
 		const res = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
-		image.setBoxes(res.map(d => {
-			const relX = d._box._x/d._imageDims._width
-			const relY = d._box._y/d._imageDims._height
-			const relW = d._box._width/d._imageDims._width			
-			const relH = d._box._height/d._imageDims._height
-			return { id: Math.random(), relX, relY, relW, relH }
-		}))
+		image.setBoxes(res.map(d => pixels2percentages(d)))
 	}
 
 	const closeModal = () => image.reset()
@@ -35,6 +36,12 @@
 
 </script>
 <style>
+	#test {
+		position: fixed;
+		left:0;
+		top: 0;
+		z-index: 1000;
+	}
 	#imgLayer {
 		position: relative;
 	}
@@ -68,7 +75,9 @@
 			id="imgLayer"
 			bind:clientWidth="{width}" 
 			bind:clientHeight="{height}"
-		>
+			bind:this="{imgLayer}"
+		><div>
+
 			<img 
 				alt="your pic"	
 				{ src }
@@ -82,8 +91,12 @@
 			/>
 			{/each}
 		</div>
+		</div>
 		<div slot="footer">
-			<button>+</button>
+			<button on:click="{createPic}">+</button>
 		</div>
 	</Modal>
+	<div id='test' bind:this="{test}">
+
+	</div>
 {/if}

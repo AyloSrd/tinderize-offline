@@ -14,7 +14,7 @@
 	$: boxWidth = Math.floor(Number(relW)*width)
 	$: boxHeight = Math.floor(Number(relH)*height)	
 	
-	$: style = `position: absolute; top: ${top}px; left: ${left}px; height: ${boxHeight}px; width: ${boxWidth}px; z-index:5000;`
+	$: style = `position: absolute; top: ${top}px; left: ${left}px; height: ${boxHeight}px; width: ${boxWidth}px;`
 
 	const close = () => {
 		const faceboxes = $image.boxes.filter(box => box.id !== id)
