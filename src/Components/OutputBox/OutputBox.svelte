@@ -9,12 +9,18 @@
 	let width
 	let height
 	let img
-	let detections
 	let imgLayer
 	let test
-
+	
+	$: src = $image.imgUrl
+	$: faceBoxes = $image.boxes
+	$: if(img) detectFaces()
+	$: if(faceBoxes.length !== 0) {
+		console.log('faceBoxes OutputBox', faceBoxes)
+	}
+	
 	const createPic = () => {
-		div2Canvas(width, height, img, test)
+		div2Canvas(width, height, img, faceBoxes, test)
 	}
 
 	const detectFaces = async() => {
@@ -23,17 +29,7 @@
 	}
 
 	const closeModal = () => image.reset()
-
-	$: src = $image.imgUrl
-	$: faceBoxes = $image.boxes
-	$: if(img) detectFaces()
-	$: if(detections) {
-		console.log(detections)
-	}
-	$: console.log(faceBoxes)
-
-	
-
+		
 </script>
 <style>
 	#test {
@@ -93,7 +89,11 @@
 		</div>
 		</div>
 		<div slot="footer">
-			<button on:click="{createPic}">+</button>
+			{#if faceBoxes.length !== 0 }
+			<button on:click="{() => {
+				div2Canvas(width, height, img, faceBoxes, test)
+			}}">+</button>
+			{/if}
 		</div>
 	</Modal>
 	<div id='test' bind:this="{test}">

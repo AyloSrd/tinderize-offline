@@ -6,7 +6,7 @@ export const pixels2percentages = d => {
 	return { id: Math.random(), relX, relY, relW, relH }
 }
 
-export const div2Canvas = (width, height, bkImg, test) => {
+export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 	//initialize canvas and canvas dimensions
 	const canvas = document.createElement('canvas')
 	canvas.width = width
@@ -14,6 +14,11 @@ export const div2Canvas = (width, height, bkImg, test) => {
 	//put img as background
 	const ctx = canvas.getContext('2d');
 	ctx.drawImage(bkImg, 0, 0, canvas.width, canvas.width * bkImg.height / bkImg.width)
+	//draw smilies
+	faceBoxes.forEach(d => {
+		const {relX, relY, relW, relH} = d
+		ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
+	})
 	//append canvas
 	test.appendChild(canvas)
 }
