@@ -1,3 +1,5 @@
+import blur from './blur'
+
 export const pixels2percentages = d => {
 	const relX = d._box._x/d._imageDims._width
 	const relY = d._box._y/d._imageDims._height
@@ -17,21 +19,19 @@ export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 	//draw smilies
 	faceBoxes.forEach((d, i) => {
 		const {relX, relY, relW, relH} = d
-		// ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
+		//smiley
 		const imgSmile = document.createElement('img')
 		imgSmile.src = './smiley.png'
 		imgSmile.width = 20;
 		imgSmile.height = 20;
 		imgSmile.onload = () => {
-		ctx.drawImage(imgSmile, relX*width, relY*height, relW*width, relH*height)
+			ctx.drawImage(imgSmile, relX*width, relY*height, relW*width, relH*height)
 		}
+		// coloured rect below
+		// ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
+		//blur below
 		// const imgData = ctx.getImageData(relX*width, relY*height, relW*width, relH*height)
-		// const data = imgData.data
-		// for (let i = 0; i < data.length; i += 4) {
-		// 	data[i]     = 255 - data[i]     // rouge
-		// 	data[i + 1] = 255 - data[i + 1] // vert
-		// 	data[i + 2] = 255 - data[i + 2] // bleu
-		// 	}
+		// blur(imgData)
 		// ctx.putImageData(imgData, relX*width, relY*height)
 	})
 	//append canvas
