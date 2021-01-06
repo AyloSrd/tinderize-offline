@@ -1,4 +1,4 @@
-import blur from './blur'
+import { addSmileys, blur } from './blur'
 
 export const pixels2percentages = d => {
 	const relX = d._box._x/d._imageDims._width
@@ -14,26 +14,38 @@ export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 	canvas.width = width
 	canvas.height = height
 	//put img as background
-	const ctx = canvas.getContext('2d');
+	const ctx = canvas.getContext('2d')
 	ctx.drawImage(bkImg, 0, 0, canvas.width, canvas.width * bkImg.height / bkImg.width)
 	//draw smilies
 	faceBoxes.forEach((d, i) => {
-		const {relX, relY, relW, relH} = d
-		//smiley
-		const imgSmile = document.createElement('img')
-		imgSmile.src = './smiley.png'
-		imgSmile.width = 20;
-		imgSmile.height = 20;
-		imgSmile.onload = () => {
-			ctx.drawImage(imgSmile, relX*width, relY*height, relW*width, relH*height)
-		}
+		const {
+			relX, 
+			relY, 
+			relW, 
+			relH
+		} = d
+		//smiley below
+		addSmileys(ctx, relX, relY, relW, relH, width, height)
+		// const imgSmile = document.createElement('img')
+		// imgSmile.src = './smiley.png'
+		// imgSmile.width = 20;
+		// imgSmile.height = 20;
+		// imgSmile.onload = () => {
+		// 	ctx.drawImage(imgSmile, relX*width, relY*height, relW*width, relH*height)
+		// 	const imgData = ctx.getImageData(relX*width, relY*height, relW*width, relH*height)
+		// 	ctx.putImageData(imgData, relX*width, relY*height)
+		// }
 		// coloured rect below
 		// ctx.fillRect(relX*width, relY*height, relW*width, relH*height)
 		//blur below
 		// const imgData = ctx.getImageData(relX*width, relY*height, relW*width, relH*height)
 		// blur(imgData)
 		// ctx.putImageData(imgData, relX*width, relY*height)
-	})
+	}) 
 	//append canvas
 	test.appendChild(canvas)
+	const link = document.createElement('a')
+	link.download = 'newPic.jpg'
+	link.href = canvas.toDataURL('image/jpg')
+	link.click()
 }

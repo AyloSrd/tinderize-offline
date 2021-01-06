@@ -11,7 +11,7 @@
 
 	onMount(async() => {
 		faceapi.nets.tinyFaceDetector.loadFromUri('./models')
-			.then(() => setTimeout(() => isLoading=false, 5000))
+			.then(() => setTimeout(() => isLoading=false, 50))
 			.catch(err => console.error(err))
 		}
 	)
