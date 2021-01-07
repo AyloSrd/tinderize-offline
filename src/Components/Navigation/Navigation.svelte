@@ -5,14 +5,13 @@
 	.Navigation {
 		width: 100vw;
 		max-width: 100%;
-		height: 100px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		height: 50px;
+		display: grid;
+		place-content: center;
 	}
 
 	.Navigation img {
-		height: 80px;
+		height: 30px;
 		width: auto;
 	}
 </style>

@@ -1,3 +1,6 @@
+<script>
+	import Footer from '../Footer/Footer.svelte'
+</script>
 <style>
 
 	@-webkit-keyframes blurred {
@@ -30,17 +33,16 @@
 	}
 
 	.container {
-		height: 100vh;
-		width: 100vw;
-		max-height: 100%;
-		max-width: 100%;
+		height: 100%;
+		width: 100%;
 		display: grid;
-		place-content: center;
+		grid-template-rows: 1fr auto;
 	}
 	
 	.spinnerWrapper {
 		width: 5rem;
 		height: auto;
+		place-self: center;
 	}
 
 	.spinnerWrapper img {
@@ -53,4 +55,5 @@
 	<div class="spinnerWrapper blurred">
 		<img src="/logo.png" alt="spinner">
 	</div>
+	<Footer />
 </div>

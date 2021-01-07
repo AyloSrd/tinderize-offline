@@ -11,24 +11,24 @@
 
 	onMount(async() => {
 		faceapi.nets.tinyFaceDetector.loadFromUri('./models')
-			.then(() => setTimeout(() => isLoading=false, 50))
+			.then(() => setTimeout(() => isLoading=false, 2000))
 			.catch(err => console.error(err))
 		}
 	)
 
 </script>
-<div class="Body">
-	{#if isLoading}
-		<Spinner />
-	{:else}	
+{#if isLoading}
+	<Spinner />
+{:else}	
+	<div class="Body">
 		<Navigation />
 		<main>
 			<InputBox />
 			<OutputBox { faceapi } />
 		</main>
 		<Footer />
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style>
 	/*#ff0066*/

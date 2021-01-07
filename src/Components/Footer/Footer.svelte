@@ -3,12 +3,13 @@
 </script>
 <style>
 	.Footer {
-		height: 50px;
+		height: 80px;
 		width: 100vw;
 		max-width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		font-size: 0.9rem;
 	}
 </style>
 
