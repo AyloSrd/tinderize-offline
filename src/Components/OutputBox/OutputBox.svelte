@@ -41,7 +41,7 @@
 		top: 0;
 		z-index: 1000;
 	}
-	
+
 	#imgLayer {
 		position: relative;
 	}
@@ -68,6 +68,9 @@
 {#if src}
 	<Modal>
 		<div slot="nav">
+			{#if faceBoxes}
+			<p style="color:white;">{JSON.stringify(faceBoxes)}</p>
+		{/if}
 			<button on:click="{closeModal}">X</button>
 		</div>
 		<div 
