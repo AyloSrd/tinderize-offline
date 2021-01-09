@@ -26,7 +26,9 @@
 
 		
 	const createPic = () => {
-		div2Canvas(width, height, img, faceBoxes, test)
+		let currFaceBoxes = $image.boxes
+		console.log(currFaceBoxes)
+		div2Canvas(width, height, img, currFaceBoxes, test)
 	}
 
 	const closeModal = () => image.reset()
@@ -39,6 +41,7 @@
 		top: 0;
 		z-index: 1000;
 	}
+	
 	#imgLayer {
 		position: relative;
 	}
@@ -84,7 +87,7 @@
 			<FaceBox 
 				{ width }
 				{ height }
-				{ faceBoxData }
+				boxId="{faceBoxData.id}"
 			/>
 			{/each}
 		</div>

@@ -5,7 +5,7 @@ export const pixels2percentages = d => {
 	const relY = d._box._y/d._imageDims._height
 	const relW = d._box._width/d._imageDims._width			
 	const relH = d._box._height/d._imageDims._height
-	return { id: Math.random(), relX, relY, relW, relH }
+	return { id: Math.random(), relX, relY, relW, relH, boxContent: 'smiley' }
 }
 
 export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {

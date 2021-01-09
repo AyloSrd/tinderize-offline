@@ -1,47 +1,30 @@
 <script>
-	import { onMount } from 'svelte'
 	import { image } from '../../imageStore'
 
 	export let width
 	export let height
-	export let boxId
-	
+	export let faceBoxData
+
 	const contentList = ['smiley', 'blur']
-	const src = './smiley.png'
-	
 	let idx = 0
-	let showButtons = false
-	let style, 
-		currBoxWidth,
-		currBoxHeight,
-		currX,
-		currY
+
+	let showButtons = true
+
+	const { id, relX, relY, relW, relH } = faceBoxData
+	const src = './smiley.png'
 
 	$: boxContent = contentList[idx%2]
-	$: newBoxSpecs = { 
-		id: boxId,
-		relX:currX,
-		relY:currY,
-		relW:currBoxWidth/width,
-		relH:currBoxHeight/height,
-		boxContent		
-	}
-	$: if (currX && currY && showButtons) image.setBoxes($image.boxes.map(box => box.id === boxId ? newBoxSpecs : box))
+	$: top = Math.floor(Number(relY)*height)
+	$: left = Math.floor(Number(relX)*width)
+	$: boxWidth = Math.floor(Number(relW)*width)
+	$: boxHeight = Math.floor(Number(relH)*height)	
+	
+	$: style = `position: absolute; top: ${top}px; left: ${left}px; height: ${boxHeight}px; width: ${boxWidth}px;`
 
-	onMount(() => {
-		let initialFaceBoxData = $image.boxes.filter(box => box.id === boxId)[0]
-		let initialTop = Math.floor(Number(initialFaceBoxData.relY)*height)
-		let initialLeft = Math.floor(Number(initialFaceBoxData.relX)*width)
-		let initialBoxWidth = Math.floor(Number(initialFaceBoxData.relW)*width)
-		let initialBoxHeight = Math.floor(Number(initialFaceBoxData.relH)*height)
-		currX = initialFaceBoxData.relX
-		currY = initialFaceBoxData.relY
-		style = `position: absolute; top: ${initialTop}px; left: ${initialLeft}px; height: ${initialBoxHeight}px; width: ${initialBoxWidth}px;`
-		console.log('faceboxdata', initialFaceBoxData, 'style',style, 'top', initialTop)
-	})	
+	
 
 	const close = () => {
-		const faceboxes = $image.boxes.filter(box => box.id !== boxId)
+		const faceboxes = $image.boxes.filter(box => box.id !== id)
 		image.setBoxes(faceboxes)
 	}
 
@@ -50,11 +33,9 @@
 	const handleMouseEnter = () => {
 		showButtons= true;
 	}
-
 	const handleMouseLeave = () => {
 		showButtons= false;
 	}
-
 </script>
 <style>
 	.faceBox {
@@ -181,8 +162,8 @@
 <div 
 	on:mouseenter="{handleMouseEnter}"
 	on:mouseleave="{handleMouseLeave}"
-	bind:clientWidth={currBoxWidth} 
-	bind:clientHeight={currBoxHeight}
+	bind:clientWidth={boxWidth} 
+	bind:clientHeight={boxHeight}
 	class="{`faceBox ${boxContent}`}"
 	{ style }
 >	
