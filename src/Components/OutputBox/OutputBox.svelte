@@ -14,7 +14,7 @@
 	
 	$: src = $image.imgUrl
 	$: faceBoxes = $image.boxes
-	$: if(img) detectFaces()
+	$: if(img && width && height) detectFaces()
 	$: if(faceBoxes.length !== 0) {
 		console.log('faceBoxes OutputBox', faceBoxes)
 	}
