@@ -27,7 +27,7 @@
 		
 	const createPic = () => {
 		let currFaceBoxes = $image.boxes
-		console.log(currFaceBoxes)
+		console.log('creating pic', 'width', width, 'height',  height, 'boxes', currFaceBoxes)
 		div2Canvas(width, height, img, currFaceBoxes, test)
 	}
 
