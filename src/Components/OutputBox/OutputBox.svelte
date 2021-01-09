@@ -74,7 +74,7 @@
 			slot="main"
 			id="imgLayer"
 			bind:clientWidth="{width}" 
-			bind:clientHeight="{height}"
+			bind:offsetHeight="{height}"
 			bind:this="{imgLayer}"
 		><div>
 
