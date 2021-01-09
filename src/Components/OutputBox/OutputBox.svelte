@@ -9,7 +9,6 @@
 	let width
 	let height
 	let img
-	let imgLayer
 	let test
 	
 	$: src = $image.imgUrl
@@ -76,7 +75,6 @@
 			id="imgLayer"
 			bind:clientWidth="{width}" 
 			bind:offsetHeight="{height}"
-			bind:this="{imgLayer}"
 		><div>
 
 			<img 
