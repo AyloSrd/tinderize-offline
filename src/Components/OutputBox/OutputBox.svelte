@@ -68,9 +68,6 @@
 {#if src}
 	<Modal>
 		<div slot="nav">
-			{#if faceBoxes}
-			<p style="color:white;">{JSON.stringify(faceBoxes)}</p>
-		{/if}
 			<button on:click="{closeModal}">X</button>
 		</div>
 		<div 
