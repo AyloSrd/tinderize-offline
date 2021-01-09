@@ -1,6 +1,6 @@
 <script>
 	import { image } from '../../imageStore'
-	import { pixels2percentages, div2Canvas } from '../../helpers/helpers.js'  
+	import { pixels2percentages, div2Canvas, getImgHeight } from '../../helpers/helpers.js'  
 	import Modal from '../Modal/Modal.svelte'
 	import FaceBox from '../FaceBox/FaceBox.svelte'
 	
@@ -14,13 +14,13 @@
 	$: src = $image.imgUrl
 	$: faceBoxes = $image.boxes
 	$: console.log('height', height)
-	$: if(img && width && height) detectFaces()
-	$: if(faceBoxes.length !== 0) {
-		console.log('heigh', faceBoxes)
-	}
+	$: if(img) detectFaces()
+
 
 	const detectFaces = async() => {
 		const res = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions())
+		console.log(res)
+		height = Math.floor(res[0].imageHeight*width/res[0].imageWidth)
 		image.setBoxes(res.map(d => pixels2percentages(d)))
 	}
 
@@ -32,7 +32,6 @@
 	}
 
 	const closeModal = () => image.reset()
-		
 </script>
 <style>
 	#test {
@@ -74,13 +73,14 @@
 			slot="main"
 			id="imgLayer"
 			bind:clientWidth="{width}" 
-			bind:offsetHeight="{height}"
 		><div>
 
 			<img 
 				alt="your pic"	
 				{ src }
 				bind:this="{img}"
+				width="600px"
+				height="auto"
 			/>
 			{#each faceBoxes as faceBoxData (faceBoxData.id)}
 			<FaceBox 

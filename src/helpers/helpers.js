@@ -49,3 +49,8 @@ export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 	link.href = canvas.toDataURL('image/jpg')
 	link.click()
 }
+
+export const getImgHeight = img => {
+	console.log('img tag',img)
+	console.log('img height', img.height)
+} 
