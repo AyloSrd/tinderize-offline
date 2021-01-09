@@ -26,21 +26,13 @@
 
 		
 	const createPic = () => {
-		let currFaceBoxes = $image.boxes
-		console.log('creating pic', 'width', width, 'height',  height, 'boxes', currFaceBoxes)
-		div2Canvas(width, height, img, currFaceBoxes, test)
+		console.log('creating canvas', width, height, img, faceBoxes)
+		div2Canvas(width, height, img, faceBoxes)
 	}
 
 	const closeModal = () => image.reset()
 </script>
 <style>
-	#test {
-		position: fixed;
-		left:0;
-		top: 0;
-		z-index: 1000;
-	}
-
 	#imgLayer {
 		position: relative;
 	}
@@ -95,7 +87,4 @@
 			<button on:click="{createPic}">+</button>
 		</div>
 	</Modal>
-	<div id='test' bind:this="{test}">
-
-	</div>
 {/if}

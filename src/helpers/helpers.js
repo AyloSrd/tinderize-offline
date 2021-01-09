@@ -8,7 +8,7 @@ export const pixels2percentages = d => {
 	return { id: Math.random(), relX, relY, relW, relH, boxContent: 'smiley' }
 }
 
-export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
+export const div2Canvas = (width, height, bkImg, faceBoxes) => {
 	//initialize canvas and canvas dimensions
 	const canvas = document.createElement('canvas')
 	canvas.width = width
@@ -43,7 +43,6 @@ export const div2Canvas = (width, height, bkImg, faceBoxes, test) => {
 		// ctx.putImageData(imgData, relX*width, relY*height)
 	}) 
 	//append canvas
-	test.appendChild(canvas)
 	const link = document.createElement('a')
 	link.download = 'newPic.jpg'
 	link.href = canvas.toDataURL('image/jpg')

@@ -31,6 +31,7 @@
 		background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,102,1) 49%);
 		display: grid;
 		place-content: center;
+		cursor: pointer;
 	}
 	.hiddenInput {
 		display: none;
