@@ -14,9 +14,10 @@
 	
 	$: src = $image.imgUrl
 	$: faceBoxes = $image.boxes
+	$: console.log('height', height)
 	$: if(img && width && height) detectFaces()
 	$: if(faceBoxes.length !== 0) {
-		console.log('faceBoxes OutputBox', faceBoxes)
+		console.log('heigh', faceBoxes)
 	}
 
 	const detectFaces = async() => {
