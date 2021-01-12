@@ -27,12 +27,24 @@
 		color: white;
 		font-size: 1.2rem;
 		font-weight: 800;
-		background: rgb(255,0,0);
-		background: radial-gradient(circle, rgba(255,0,0,1) 0%, rgba(255,0,102,1) 49%);
+		background: rgb(255,0,102);
+		background: linear-gradient(45deg, rgba(255,0,0,1) 3%, rgba(255,0,102,1) 57%);
 		display: grid;
 		place-content: center;
 		cursor: pointer;
 	}
+
+	.fakeUploadBtn:hover {
+		background: rgb(255,0,0);
+		background: linear-gradient(45deg, rgba(210,0,0,1) 3%, rgba(210,0,57,1) 57%);
+	}
+
+	.fakeUploadBtn:active {
+		background: rgb(255,0,0);
+		background: linear-gradient(135deg, rgba(210,0,0,1) 3%, rgba(210,0,57,1) 57%);
+		box-shadow: 0px 0px 15px -6px rgb(255,0,102);
+	}
+
 	.hiddenInput {
 		display: none;
 	}

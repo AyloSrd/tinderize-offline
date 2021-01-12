@@ -1,6 +1,6 @@
 export const blur = imgData => {
 	let k = 0
-
+	let px = imgData.data
 	while( k <= 100 ){
 		for (let i = 0, len= px.length; i < len; i++) {
 		   if (i % 4 === 3) continue  

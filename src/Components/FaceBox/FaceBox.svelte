@@ -6,7 +6,7 @@
 	export let height
 	export let boxId
 	
-	const contentList = ['smiley', 'blur']
+	const contentList = ['blur', 'blur']
 	const src = './smiley.png'
 	
 	let idx = 0
@@ -44,8 +44,6 @@
 		const faceboxes = $image.boxes.filter(box => box.id !== boxId)
 		image.setBoxes(faceboxes)
 	}
-
-	const switchContent = () => idx = idx + 1
 
 	const handleMouseEnter = () => {
 		showButtons= true;
@@ -117,56 +115,6 @@
           transform: rotate(-45deg);
 	}
 
-	.faceBox .switchBtn {
-		border-radius: 50%;
-		position: absolute;
-		height: 20px;
-		width: 20px;
-		bottom: 0;
-		left: 50%;
-		-ms-transform: translateX(-50%);
-		transform: translateX(-50%);
-		padding: 0;
-		border: none;
-		background-color: #f00;
-		cursor: pointer;
-	}
-
-
-	.faceBox .switchBtn .switchIcon {
-		color: #fff;
-		position: absolute;
-		margin-left: 2px;
-		margin-top: 6px;
-		width: 15px;
-		height: 10px;
-		border-top: solid 3px currentColor;
-		border-bottom: solid 3px currentColor;
-	}
-
-	.faceBox .switchBtn .switchIcon:before {
-		content: '';
-		position: absolute;
-		top: -2px;
-		right: 5px;
-		width: 9px;
-		height: 9px;
-		border-bottom: solid 3px currentColor;
-		transform: rotate(30deg)
-	}
-
-	.faceBox .switchBtn .switchIcon:after {
-		content: '';
-		position: absolute;
-		top: -6px;
-		right: 1px;
-		width: 9px;
-		height: 9px;
-		border-top: solid 3px currentColor;
-		transform: rotate(30deg)
-	}
-
-
 	.faceBox.blur {
 		background: rgba( 255, 255, 255, 0.00 );
 		backdrop-filter: blur( 12.0px );
@@ -181,8 +129,8 @@
 <div 
 	on:mouseenter="{handleMouseEnter}"
 	on:mouseleave="{handleMouseLeave}"
-	bind:clientWidth={currBoxWidth} 
-	bind:clientHeight={currBoxHeight}
+	bind:clientWidth="{currBoxWidth}" 
+	bind:clientHeight="{currBoxHeight}"
 	class="{`faceBox ${boxContent}`}"
 	{ style }
 >	
@@ -197,12 +145,6 @@
 			on:click="{close}"
 		>
 			<div class="removeIcon"></div>
-		</button>
-		<button 
-			class="switchBtn"
-			on:click="{switchContent}"
-		>
-			<div class="switchIcon"></div>
 		</button>
 	{/if}
 </div>
