@@ -20,10 +20,10 @@
 	$: boxContent = contentList[idx%2]
 	$: newBoxSpecs = { 
 		id: boxId,
-		relX:currX,
-		relY:currY,
-		relW:currBoxWidth/width,
-		relH:currBoxHeight/height,
+		relX: currX,
+		relY: currY,
+		relW: currBoxWidth/width,
+		relH: currBoxHeight/height,
 		boxContent		
 	}
 	$: if (currX && currY && showButtons) image.setBoxes($image.boxes.map(box => box.id === boxId ? newBoxSpecs : box))
