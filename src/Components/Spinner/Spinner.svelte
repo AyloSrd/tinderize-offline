@@ -1,5 +1,7 @@
 <script>
 	import Footer from '../Footer/Footer.svelte'
+
+	export let footerText
 </script>
 <style>
 
@@ -55,5 +57,7 @@
 	<div class="spinnerWrapper blurred">
 		<img src="/logo.png" alt="spinner">
 	</div>
-	<Footer />
+	<Footer 
+		textContent="{footerText}"
+	/>
 </div>

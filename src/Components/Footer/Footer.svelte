@@ -1,5 +1,5 @@
 <script>
-
+	export let textContent = ''
 </script>
 <style>
 	.Footer {
@@ -16,5 +16,5 @@
 <footer 
 	class="Footer"
 >
-	made with 🔥 by Aÿlo
+	{textContent}
 </footer>

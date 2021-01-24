@@ -20,7 +20,9 @@
 
 </script>
 {#if isLoading}
-	<Spinner />
+	<Spinner 
+		footerText="made with 🔥 by Aÿlo"
+	/>
 {:else}	
 	<div class="Body">
 		<Navigation />
@@ -31,7 +33,9 @@
 				<OutputBox { faceapi } />
 			{/if}
 		</main>
-		<Footer />
+		<Footer 
+			textContent="made with 🔥 by Aÿlo"
+		/>
 	</div>
 {/if}
 
