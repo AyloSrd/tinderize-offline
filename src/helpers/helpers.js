@@ -42,7 +42,6 @@ export const div2Canvas = (width, height, bkImg, faceBoxes) => {
 		blur(imgData)
 		ctx.putImageData(imgData, relX*width, relY*height)
 	}) 
-	//append canvas
 	const link = document.createElement('a')
 	link.download = 'newPic.jpg'
 	link.href = canvas.toDataURL('image/jpg')
