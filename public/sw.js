@@ -13,7 +13,7 @@ const ASSETS  = [
     'https://tinderize-offline.vercel.app/manifest.json'
 ]
 
-let cache_name = "tindoff-v1.1-beta";
+let cache_name = "tindoff-v2.0-beta";
 
 self.addEventListener("install", event => {
     console.log("installing...");
@@ -28,8 +28,20 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
-    console.log('You just fetched', event.request.url)
-})
+    if (event.request.url === 'https://tinderize-offline.vercel.app/') {
+        event.respondWith(
+            fetch(event.request).catch(err =>
+                self.cache.open(cache_name).then(cache => cache.match("/index.html"))
+            )
+        )
+    } else {
+        event.respondWith(
+            fetch(event.request).catch(err =>
+                caches.match(event.request).then(response => response)
+            )
+        );
+    }
+});
 
 
 // var CACHE_STATIC_NAME = 'static-v1.6-BETA';
