@@ -1,4 +1,4 @@
-var CACHE_STATIC_NAME = 'static-v1.3-BETA';
+var CACHE_STATIC_NAME = 'static-v1.4-BETA';
 
 self.addEventListener('install', function (event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
@@ -9,6 +9,7 @@ self.addEventListener('install', function (event) {
         cache.addAll([
           '/',
           '/index.html',
+          '/offline.html',
           '/global.css',
           '/manifest.json',
           '/face-api.min.js',
