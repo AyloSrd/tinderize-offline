@@ -45,15 +45,19 @@ self.addEventListener('activate', function (event) {
   return self.clients.claim();
 });
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.open(CACHE_STATIC_NAME)
-        .then(function(cache) {
-          return fetch(event.request)
-            .then(function(res) {
-              cache.put(event.request, res.clone());
-              return res;
-            });
-        })
-    );
-  });
+self.addEventListener("fetch", event => {
+    console.log("You fetched " + event.url);
+});
+
+// self.addEventListener('fetch', function(event) {
+//     event.respondWith(
+//       caches.open(CACHE_STATIC_NAME)
+//         .then(function(cache) {
+//           return fetch(event.request)
+//             .then(function(res) {
+//               cache.put(event.request, res.clone());
+//               return res;
+//             });
+//         })
+//     );
+//   });
