@@ -1,4 +1,4 @@
-var CACHE_STATIC_NAME = 'static-v1.4-BETA';
+var CACHE_STATIC_NAME = 'static-v1.5-BETA';
 
 self.addEventListener('install', function (event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
@@ -22,7 +22,8 @@ self.addEventListener('install', function (event) {
           '/build/bundle.css',
           '/build/bundle.js',
           '/build/bundle.js.map',
-          'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,500;1,700&display=swap'
+          'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,500;1,700&display=swap',
+          'https://tinderize-offline.vercel.app/'
         ])
       })
   )
