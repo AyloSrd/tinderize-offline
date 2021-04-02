@@ -1,5 +1,5 @@
 self.addEventListener("fetch", event => {
-    console.log("You just fetched " + event.url)
+    console.log('You just fetched', event)
 })
 
 
