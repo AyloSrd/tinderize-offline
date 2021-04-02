@@ -16,7 +16,7 @@ self.addEventListener('install', function (event) {
           '/favicon.ico',
           '/favicon.png',
           '/logo.png',
-          'smiley.png',
+          '/smiley.png',
           '/models/tiny_face_detector_model-shard1',
           '/models/tiny_face_detector_model-weights_manifest.json',
           '/build/bundle.css',
