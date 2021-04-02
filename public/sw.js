@@ -1,4 +1,4 @@
-const CACHE_STATIC_NAME = 'static-v1-BETA';
+const CACHE_STATIC_NAME = 'static-v1.1-BETA';
 
 self.addEventListener('install', event => {
   console.log('[Service Worker] Installing Service Worker ...', event);
