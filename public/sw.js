@@ -2,7 +2,7 @@ const ASSETS  = [
     'https://tinderize-offline.vercel.app/global.css',
     'https://tinderize-offline.vercel.app/build/bundle.css',
     'https://tinderize-offline.vercel.app/build/bundle.js',
-    '/index.html',
+    'https://tinderize-offline.vercel.app/',
     'https://tinderize-offline.vercel.app/models/tiny_face_detector_model-weights_manifest.json',
     'https://tinderize-offline.vercel.app/logo.png',
     'https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,500;1,700&display=swap',
@@ -13,7 +13,7 @@ const ASSETS  = [
     'https://tinderize-offline.vercel.app/manifest.json'
 ]
 
-let cache_name = "tindoff-v2.0-beta";
+let cache_name = "tindoff-v3.0-beta";
 
 self.addEventListener("install", event => {
     console.log("installing...");
@@ -28,20 +28,12 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
-    if (event.request.url === 'https://tinderize-offline.vercel.app/') {
-        event.respondWith(
-            fetch(event.request).catch(err =>
-                self.cache.open(cache_name).then(cache => cache.match("/index.html"))
-            )
+    event.respondWith(
+        fetch(event.request).catch(err =>
+            caches.match(event.request).then(response => response)
         )
-    } else {
-        event.respondWith(
-            fetch(event.request).catch(err =>
-                caches.match(event.request).then(response => response)
-            )
-        );
-    }
-});
+    )
+})
 
 
 // var CACHE_STATIC_NAME = 'static-v1.6-BETA';
