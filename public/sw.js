@@ -10,9 +10,10 @@ const ASSETS  = [
     'https://tinderize-offline.vercel.app/models/tiny_face_detector_model-shard1',
     'https://fonts.gstatic.com/s/ubuntu/v15/4iCv6KVjbNBYlgoCxCvjsGyN.woff2',
     'https://tinderize-offline.vercel.app/smiley.png',
+    'https://tinderize-offline.vercel.app/manifest.json'
 ]
 
-let cache_name = "tindoff-v1.0-beta";
+let cache_name = "tindoff-v1.1-beta";
 
 self.addEventListener("install", event => {
     console.log("installing...");
