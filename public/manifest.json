@@ -6,7 +6,7 @@
   "scope": "/",
   "display": "standalone",
   "start_url": "https://tinderize-offline.vercel.app/",
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "theme_color": "#FF0066",
   "description": "Face-blurrer web-app using A.I.",
   "orientation": "portrait",

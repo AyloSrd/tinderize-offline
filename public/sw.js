@@ -13,7 +13,7 @@ const ASSETS  = [
     'https://tinderize-offline.vercel.app/manifest.json'
 ]
 
-let CACHE_NAME = "tindoff-v4.0-beta";
+let CACHE_NAME = "tindoff-v4.1-beta";
 
 self.addEventListener("install", event => {
     console.log("installing...")
